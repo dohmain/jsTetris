@@ -1,14 +1,12 @@
-import { TETRIS } from './constant';
+import { TETRIS, TETROMINOS, COLORS } from './constant';
 
 export default class Tetromino {
   constructor(ctx) {
     this.ctx = ctx;
-    this.color = "blue";
-    this.shape = [
-      [2, 0, 0],
-      [2, 2, 2],
-      [0, 0, 0]
-    ];
+    this.tetrominoNumber = Math.floor(Math.random() * TETROMINOS.length)
+    this.color = COLORS[this.tetrominoNumber - 1];
+    debugger;
+    this.shape = TETROMINOS[this.tetrominoNumber];
     this.x = 3;
     this.y = 0;
   }
