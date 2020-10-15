@@ -20,21 +20,19 @@ export default class Tetris {
   }
 
   keyDownHandler(e) {
-    // console.log(e.key)
-    // if (e.key.toLowerCase() === "j" || e.key.toLowerCase() === "l") {
-    //   let delta = e.key.toLowerCase() === "j" ? -1 : 1;
-    //   this.level.piece.move(delta);
-    //   this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-    //   this.level.piece.draw();
-    //   console.table(this.level.grid);
-    // }
-
     let pressedKey = e.key.toLowerCase();
     const moveMap = {j: "left", k: "down", l: "right"}
     if (pressedKey === "j" || pressedKey === "k" || pressedKey === "l") {
       e.preventDefault();
       let direction = moveMap[pressedKey];
       this.level.piece.move(direction);
+      this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+      this.level.piece.draw();
+    }
+    const rotateMap = {u: "left", o: "right"}
+    if (pressedKey === "u" || pressedKey === "o") {
+      e.preventDefault();
+      this.level.piece.rotate(rotateMap[pressedKey]);
       this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
       this.level.piece.draw();
     }
