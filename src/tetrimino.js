@@ -24,11 +24,18 @@ export default class Tetromino {
     })
   }
 
-  move(delta) {
-    if (delta < 0 && this.x > 0) {
-      this.x += delta;
-    } else if (delta > 0 && this.x < (TETRIS.COLS - this.shape[0].length)) {
-      this.x += delta;
+  move(direction) {
+    // if (delta < 0 && this.x > 0) {
+    //   this.x += delta;
+    // } else if (delta > 0 && this.x < (TETRIS.COLS - this.shape[0].length)) {
+    //   this.x += delta;
+    // }
+    const directionMap = {left: -1, down: 1, right: 1}
+    if (direction === "down") {
+      this.y += directionMap[direction]
+    } else {
+      if (direction === "left" && this.x > 0 || direction === "right" && this.x < (TETRIS.COLS - this.shape[0].length))
+      this.x += directionMap[direction]
     }
   }
 }
