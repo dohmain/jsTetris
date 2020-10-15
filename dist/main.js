@@ -90,11 +90,11 @@
 /*!*************************!*\
   !*** ./src/constant.js ***!
   \*************************/
-/*! exports provided: TETRIS */
+/*! exports provided: TETRIS, TETROMINOS, COLORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TETRIS\", function() { return TETRIS; });\nconst TETRIS = {\n  TILE_SIZE: 30,\n  COLS: 10,\n  ROWS: 20,\n}\n\n//# sourceURL=webpack:///./src/constant.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TETRIS\", function() { return TETRIS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TETROMINOS\", function() { return TETROMINOS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"COLORS\", function() { return COLORS; });\nconst TETRIS = {\n  TILE_SIZE: 30,\n  COLS: 10,\n  ROWS: 20,\n}\n\nconst TETROMINOS = [\n  [\n    [0, 0, 0, 0],\n    [1, 1, 1, 1],\n    [0, 0, 0, 0],\n    [0, 0, 0, 0]\n  ],\n  [\n    [2, 0, 0],\n    [2, 2, 2],\n    [0, 0, 0]\n  ],\n  [\n    [0, 0, 3],\n    [3, 3, 3],\n    [0, 0, 0]\n  ],\n  [\n    [4, 4],\n    [4, 4]\n  ],\n  [\n    [0, 5, 5],\n    [5, 5, 0],\n    [0, 0, 0]\n  ],\n  [\n    [6, 6, 0],\n    [0, 6, 6],\n    [0, 0, 0]\n  ],\n  [\n    [0, 7, 0],\n    [7, 7, 7],\n    [0, 0, 0]\n  ]\n]\n\nconst COLORS = [\n  \"cyan\",\n  \"blue\",\n  \"orange\",\n  \"yellow\",\n  \"green\",\n  \"red\",\n  \"purple\"\n]\n\n//# sourceURL=webpack:///./src/constant.js?");
 
 /***/ }),
 
