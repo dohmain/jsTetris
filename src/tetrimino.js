@@ -21,24 +21,6 @@ export default class Tetromino {
     })
   }
 
-  // rotate(direction) {
-  //   if (direction === "left") {
-  //     this.shape.forEach(row => row.reverse());
-  //     for (let y = 0; y < this.shape.length; y++) {
-  //       for (let x = 0; x < y; x++) {
-  //         [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
-  //       }
-  //     }
-  //   } else if (direction === "right") {
-  //     for (let y = 0; y < this.shape.length; y++) {
-  //       for (let x = 0; x < y; x++) {
-  //         [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
-  //       }
-  //     }
-  //     this.shape.forEach(row => row.reverse());
-  //   }
-  // }
-
   move(tetromino) {
     this.ctx.clearRect(0, 0, TETRIS.COLS, TETRIS.ROWS)
     this.x = tetromino.x;

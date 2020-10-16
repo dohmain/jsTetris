@@ -51,3 +51,10 @@ export const COLORS = [
   "red",
   "purple"
 ]
+
+export const POINTS = { // score * level
+  SINGLE: 100,
+  DOUBLE: 300,
+  TRIPLE: 500,
+  TETRIS: 800
+}
