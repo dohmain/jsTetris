@@ -1,12 +1,31 @@
 import Level from './level';
 
-
 export default class Tetris {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
+    this.time = {start: 0, elapsed: 0, interval: 200};
     this.play();
     this.inputHandler();
+  }
+
+  animate(now = 0) {
+    debugger;
+    this.time.elapsed = now - this.time.start;
+    if (this.time.elapsed > this.time.interval) {
+      debugger;
+      this.time.start = now;
+      this.level.gravity();
+    }
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.level.draw();
+    requestAnimationFrame(this.animate.bind(this))
+  }
+
+  play() {
+    this.level.reset();
+    console.table(this.level.grid);
+    this.animate();
   }
 
   inputHandler() {
@@ -39,17 +58,5 @@ export default class Tetris {
         this.level.tetromino.move(nextTetromino)
       }
     }
-  }
-
-  animate() {
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    this.level.draw();
-    requestAnimationFrame(this.animate.bind(this))
-  }
-
-  play() {
-    this.level.reset();
-    console.table(this.level.grid);
-    this.animate();
   }
 }

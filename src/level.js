@@ -17,6 +17,16 @@ export default class Level {
   getNewLevel() {
     return Array.from( {length: 20}, () => Array(10).fill(0))
   }
+
+  gravity() {
+    let nextTetromino = this.tetromino;
+    nextTetromino.y += 1;
+    if (this.isValidMove(nextTetromino)) {
+      this.tetromino.move(nextTetromino);
+    } else {
+      this.tetromino = new Tetromino(this.ctx);
+    }
+  }
   
   rotate(tetromino, direction) {
     if (direction === "left") {
@@ -53,7 +63,7 @@ export default class Level {
   }
   
   aboveFloor(y) {
-    return y <= TETRIS.ROWS;
+    return y < TETRIS.ROWS;
   }
   
   empty(x, y) {
