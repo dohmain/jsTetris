@@ -1,5 +1,5 @@
 import { TETRIS } from './constant';
-import Tetromino from './tetrimino';
+import Tetromino from './tetromino';
 
 export default class Level {
   constructor(ctx) {
