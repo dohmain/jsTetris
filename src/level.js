@@ -1,4 +1,4 @@
-import { TETRIS } from './constant';
+import { TETRIS, COLORS } from './constant';
 import Tetromino from './tetromino';
 
 export default class Level {
@@ -25,8 +25,9 @@ export default class Level {
       this.tetromino.move(nextTetromino);
     } else {
       this.freeze();
+      this.lineClear();
+
       this.tetromino = new Tetromino(this.ctx);
-      console.table(this.grid)
     }
   }
 
@@ -35,6 +36,26 @@ export default class Level {
       row.forEach((value, x) => {
         if (value > 0) {
           this.grid[y + this.tetromino.y - 1][x + this.tetromino.x] = value;
+        }
+      });
+    });
+  }
+
+  lineClear() {
+    this.grid.forEach((row, y) => {
+      if (row.every(value => value > 0)) {
+        this.grid.splice(y, 1);
+        this.grid.unshift(Array(TETRIS.COLS).fill(0));
+      }
+    })
+  }
+
+  drawLevel() {
+    this.grid.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if (value > 0) {
+          this.ctx.fillStyle = COLORS[value];
+          this.ctx.fillRect(x, y, 1, 1);
         }
       });
     });
@@ -84,5 +105,6 @@ export default class Level {
 
   draw() {
     this.tetromino.draw();
+    this.drawLevel();
   }
 }
