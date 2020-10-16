@@ -5,8 +5,16 @@ export default class Tetris {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
     this.time = {start: 0, elapsed: 0, interval: 200};
-    this.play();
     this.inputHandler();
+    this.startPlay();
+  }
+
+  startPlay() {
+    let playBtn = document.getElementById("play-btn");
+    playBtn.addEventListener("click", e => {
+      e.preventDefault();
+      this.play();
+    })
   }
 
   animate(now = 0) {
