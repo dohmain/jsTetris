@@ -26,9 +26,12 @@ export default class Level {
     } else {
       this.freeze();
       this.lineClear();
-
+      if (this.tetromino.y === 1) {
+        return false;
+      }
       this.tetromino = new Tetromino(this.ctx);
     }
+    return true;
   }
 
   freeze() {

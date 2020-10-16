@@ -21,7 +21,10 @@ export default class Tetris {
     this.time.elapsed = now - this.time.start;
     if (this.time.elapsed > this.time.interval) {
       this.time.start = now;
-      this.level.gravity();
+      if (!this.level.gravity()) {
+        alert("game over")
+        return;
+      }
     }
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.level.draw();
@@ -60,7 +63,6 @@ export default class Tetris {
         }
       }
       if (this.level.isValidMove(nextTetromino)) {
-        console.log("is valid move")
         this.level.tetromino.move(nextTetromino)
       }
     }
