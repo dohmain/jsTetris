@@ -65,22 +65,23 @@ export default class Level {
   }
   
   rotate(tetromino, direction) {
+    let newTetromino = tetromino;
     if (direction === "left") {
-      tetromino.shape.forEach(row => row.reverse());
-      for (let y = 0; y < tetromino.shape.length; ++y) {
+      newTetromino.shape.forEach(row => row.reverse());
+      for (let y = 0; y < newTetromino.shape.length; ++y) {
         for (let x = 0; x < y; ++x) {
-          [tetromino.shape[x][y], tetromino.shape[y][x]] = [tetromino.shape[y][x], tetromino.shape[x][y]];
+          [newTetromino.shape[x][y], newTetromino.shape[y][x]] = [newTetromino.shape[y][x], newTetromino.shape[x][y]];
         }
       }
-      return tetromino;
+      if (this.isValidMove(newTetromino)) return newTetromino;
     } else if (direction === "right") {
-      for (let y = 0; y < tetromino.shape.length; ++y) {
+      for (let y = 0; y < newTetromino.shape.length; ++y) {
         for (let x = 0; x < y; ++x) {
-          [tetromino.shape[x][y], tetromino.shape[y][x]] = [tetromino.shape[y][x], tetromino.shape[x][y]];
+          [newTetromino.shape[x][y], newTetromino.shape[y][x]] = [newTetromino.shape[y][x], newTetromino.shape[x][y]];
         }
       }
-      tetromino.shape.forEach(row => row.reverse());
-      return tetromino;
+      newTetromino.shape.forEach(row => row.reverse());
+      if (this.isValidMove(newTetromino)) return newTetromino;
     }
   }
   

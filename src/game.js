@@ -23,12 +23,12 @@ export default class Tetris {
       this.time.start = now;
       if (!this.level.gravity()) {
         alert("game over")
-        return;
+        cancelAnimationFrame(this.requestId);
       }
     }
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.level.draw();
-    requestAnimationFrame(this.animate.bind(this))
+    this.requestId = requestAnimationFrame(this.animate.bind(this));
   }
 
   play() {
