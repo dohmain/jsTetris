@@ -1,4 +1,4 @@
-import { TETRIS, TETROMINOS, COLORS } from './constant';
+import { TETROMINOS, COLORS } from './constant';
 
 export default class Tetromino {
   constructor(ctx) {
@@ -10,6 +10,12 @@ export default class Tetromino {
     this.y = 0;
   }
 
+  move(tetromino) {
+    this.x = tetromino.x;
+    this.y = tetromino.y;
+    this.shape = tetromino.shape;
+  }
+
   draw() {
     this.ctx.fillStyle = this.color;
     this.shape.forEach((row, y) => {
@@ -19,13 +25,5 @@ export default class Tetromino {
         }
       })
     })
-  }
-
-  move(tetromino) {
-    // this.ctx.clearRect(0, 0, TETRIS.COLS, TETRIS.ROWS)
-    this.x = tetromino.x;
-    this.y = tetromino.y;
-    this.shape = tetromino.shape;
-    // this.draw();
   }
 }

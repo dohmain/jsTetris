@@ -17,21 +17,7 @@ export default class Level {
   getNewLevel() {
     return Array.from( {length: 20}, () => Array(10).fill(0))
   }
-
-  draw() {
-    this.tetromino.draw();
-  }
-
-  isValidMove(tetromino) {
-    return tetromino.shape.every((row, dy) => {
-      return row.every((value, dx) => {
-        let x = tetromino.x + dx;
-        let y = tetromino.y + dy;
-        return value === 0 || (this.insideWalls(x) && this.aboveFloor(y) && this.empty(x, y));
-      })
-    })
-  }
-
+  
   rotate(tetromino, direction) {
     if (direction === "left") {
       tetromino.shape.forEach(row => row.reverse());
@@ -51,16 +37,30 @@ export default class Level {
       return tetromino;
     }
   }
-
+  
+  isValidMove(tetromino) {
+    return tetromino.shape.every((row, dy) => {
+      return row.every((value, dx) => {
+        let x = tetromino.x + dx;
+        let y = tetromino.y + dy;
+        return value === 0 || (this.insideWalls(x) && this.aboveFloor(y) && this.empty(x, y));
+      })
+    })
+  }
+  
   insideWalls(x) {
     return x >= 0 && x < TETRIS.COLS;
   }
-
+  
   aboveFloor(y) {
     return y <= TETRIS.ROWS;
   }
-
+  
   empty(x, y) {
     return this.grid[y] && this.grid[y][x] === 0;
+  }
+
+  draw() {
+    this.tetromino.draw();
   }
 }
