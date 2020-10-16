@@ -21,31 +21,29 @@ export default class Tetromino {
     })
   }
 
-  rotate(direction) {
-    if (direction === "left") {
-      this.shape.forEach(row => row.reverse());
-      for (let y = 0; y < this.shape.length; y++) {
-        for (let x = 0; x < y; x++) {
-          [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
-        }
-      }
-    } else if (direction === "right") {
-      for (let y = 0; y < this.shape.length; y++) {
-        for (let x = 0; x < y; x++) {
-          [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
-        }
-      }
-      this.shape.forEach(row => row.reverse());
-    }
-  }
+  // rotate(direction) {
+  //   if (direction === "left") {
+  //     this.shape.forEach(row => row.reverse());
+  //     for (let y = 0; y < this.shape.length; y++) {
+  //       for (let x = 0; x < y; x++) {
+  //         [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
+  //       }
+  //     }
+  //   } else if (direction === "right") {
+  //     for (let y = 0; y < this.shape.length; y++) {
+  //       for (let x = 0; x < y; x++) {
+  //         [this.shape[x][y], this.shape[y][x]] = [this.shape[y][x], this.shape[x][y]]
+  //       }
+  //     }
+  //     this.shape.forEach(row => row.reverse());
+  //   }
+  // }
 
-  move(direction) {
-    const directionMap = {left: -1, down: 1, right: 1}
-    if (direction === "down") {
-      this.y += directionMap[direction]
-    } else {
-      if (direction === "left" && this.x > 0 || direction === "right" && this.x < (TETRIS.COLS - this.shape[0].length))
-      this.x += directionMap[direction]
-    }
+  move(tetromino) {
+    this.ctx.clearRect(0, 0, TETRIS.COLS, TETRIS.ROWS)
+    this.x = tetromino.x;
+    this.y = tetromino.y;
+    this.shape = tetromino.shape;
+    this.draw();
   }
 }

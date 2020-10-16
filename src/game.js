@@ -7,10 +7,7 @@ import Tetromino from './tetrimino';
 export default class Tetris {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
-    this.ctx.canvas.width = TETRIS.TILE_SIZE * TETRIS.COLS;
-    this.ctx.canvas.height = TETRIS.TILE_SIZE * TETRIS.ROWS;
-    this.ctx.scale(TETRIS.TILE_SIZE, TETRIS.TILE_SIZE)
-    this.level = new Level();
+    this.level = new Level(this.ctx);
     this.play();
     this.inputHandler();
   }
@@ -20,29 +17,35 @@ export default class Tetris {
   }
 
   keyDownHandler(e) {
-    let pressedKey = e.key.toLowerCase();
-    const moveMap = {j: "left", k: "down", l: "right"}
-    if (pressedKey === "j" || pressedKey === "k" || pressedKey === "l") {
-      e.preventDefault();
-      let direction = moveMap[pressedKey];
-      this.level.piece.move(direction);
-      this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-      this.level.piece.draw();
+    let keyMap = {
+      ["i"]: tetromino => ({ ...tetromino, y: tetromino.y + 1}),
+      ["j"]: tetromino => ({ ...tetromino, x: tetromino.x - 1}),
+      ["k"]: tetromino => ({ ...tetromino, y: tetromino.y + 1}),
+      ["l"]: tetromino => ({ ...tetromino, x: tetromino.x + 1}),
+      ["u"]: tetromino => this.level.rotate(tetromino, "left"),
+      ["o"]: tetromino => this.level.rotate(tetromino, "right"),
     }
-    const rotateMap = {u: "left", o: "right"}
-    if (pressedKey === "u" || pressedKey === "o") {
-      e.preventDefault();
-      this.level.piece.rotate(rotateMap[pressedKey]);
-      this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-      this.level.piece.draw();
+    let pressedKey = e.key.toLowerCase();
+
+    if (keyMap[pressedKey]) {
+      e.preventDefault()
+      let nextTetromino = keyMap[pressedKey](this.level.tetromino)
+      console.log(pressedKey)
+      if (pressedKey === "i") {
+        while (this.level.isValidMove(nextTetromino)) {
+          this.level.tetromino.move(nextTetromino);
+          nextTetromino = keyMap[pressedKey](this.level.tetromino)
+        }
+      }
+      if (this.level.isValidMove(nextTetromino)) {
+        console.log("is valid move")
+        this.level.tetromino.move(nextTetromino)
+      }
     }
   }
 
   play() {
     this.level.reset();
-    this.tetromino = new Tetromino(this.ctx);
-    this.tetromino.draw();
-    this.level.piece = this.tetromino;
     console.table(this.level.grid);
   }
 }
