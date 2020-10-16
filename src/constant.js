@@ -43,6 +43,7 @@ export const TETROMINOS = [
 ]
 
 export const COLORS = [
+  "none",
   "cyan",
   "blue",
   "orange",
