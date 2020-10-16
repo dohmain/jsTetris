@@ -10,10 +10,8 @@ export default class Tetris {
   }
 
   animate(now = 0) {
-    debugger;
     this.time.elapsed = now - this.time.start;
     if (this.time.elapsed > this.time.interval) {
-      debugger;
       this.time.start = now;
       this.level.gravity();
     }

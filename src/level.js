@@ -24,8 +24,20 @@ export default class Level {
     if (this.isValidMove(nextTetromino)) {
       this.tetromino.move(nextTetromino);
     } else {
+      this.freeze();
       this.tetromino = new Tetromino(this.ctx);
+      console.table(this.grid)
     }
+  }
+
+  freeze() {
+    this.tetromino.shape.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if (value > 0) {
+          this.grid[y + this.tetromino.y - 1][x + this.tetromino.x] = value;
+        }
+      });
+    });
   }
   
   rotate(tetromino, direction) {
