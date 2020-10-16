@@ -1,7 +1,4 @@
-import { TETRIS } from './constant'
 import Level from './level';
-import Tetromino from './tetrimino';
-
 
 
 export default class Tetris {
@@ -44,8 +41,15 @@ export default class Tetris {
     }
   }
 
+  animate() {
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.level.draw();
+    requestAnimationFrame(this.animate.bind(this))
+  }
+
   play() {
     this.level.reset();
     console.table(this.level.grid);
+    this.animate();
   }
 }

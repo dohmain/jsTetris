@@ -18,6 +18,10 @@ export default class Level {
     return Array.from( {length: 20}, () => Array(10).fill(0))
   }
 
+  draw() {
+    this.tetromino.draw();
+  }
+
   isValidMove(tetromino) {
     return tetromino.shape.every((row, dy) => {
       return row.every((value, dx) => {

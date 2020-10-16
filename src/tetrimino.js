@@ -22,10 +22,10 @@ export default class Tetromino {
   }
 
   move(tetromino) {
-    this.ctx.clearRect(0, 0, TETRIS.COLS, TETRIS.ROWS)
+    // this.ctx.clearRect(0, 0, TETRIS.COLS, TETRIS.ROWS)
     this.x = tetromino.x;
     this.y = tetromino.y;
     this.shape = tetromino.shape;
-    this.draw();
+    // this.draw();
   }
 }
