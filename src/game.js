@@ -4,9 +4,10 @@ export default class Tetris {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
-    this.time = {start: 0, elapsed: 0, interval: 1200};
+    this.time = {start: 0, elapsed: 0, interval: 100};
     this.inputHandler();
     this.startPlay();
+    this.requestId;
   }
 
   startPlay() {
@@ -23,7 +24,7 @@ export default class Tetris {
       this.time.start = now;
       if (!this.level.gravity()) {
         alert("game over")
-        cancelAnimationFrame(this.requestId);
+        return cancelAnimationFrame(this.requestId);
       }
     }
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -33,7 +34,7 @@ export default class Tetris {
 
   play() {
     this.level.reset();
-    console.table(this.level.grid);
+    if (this.requestId) cancelAnimationFrame(this.requestId);
     this.animate();
   }
 
