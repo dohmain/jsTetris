@@ -54,7 +54,21 @@ body {
 
 #main-container {
   display: flex; 
+  flex-direction: column;
   margin: auto;
+}
+
+#header-container {
+  align-self: center;
+}
+
+#header-text {
+  font-size: 3em;
+}
+
+#col-containers {
+  display: flex;
+  flex-direction: row;
 }
 
 .stats-box {

@@ -9,25 +9,30 @@
 </head>
 <body>
   <div id="main-container">
-    <div id="left-col">
-      <canvas id="tetris"></canvas>
+    <div id="header-container">
+      <span id="header-text">TETRIS</span>
     </div>
-    <div id="right-col">
-      <div class="stats-box" id="score-box">
-        Score:
-        <span id="score">0</span>
+    <div id="col-containers">
+      <div id="left-col">
+        <canvas id="tetris"></canvas>
       </div>
-      <div class="stats-box" id="level-box">
-        Level:
-        <span id="level">0</span>
-      </div>
-      <div class="stats-box" id="line-box">
-        Lines:
-        <span id="lines">0</span>
-      </div>
-      <div id="button-container">
-        <button id="play-btn">Play</button>
-        <button class="hidden" id="pause-btn">Pause</button>
+      <div id="right-col">
+        <div class="stats-box" id="score-box">
+          Score:
+          <span id="score">0</span>
+        </div>
+        <div class="stats-box" id="level-box">
+          Level:
+          <span id="level">0</span>
+        </div>
+        <div class="stats-box" id="line-box">
+          Lines:
+          <span id="lines">0</span>
+        </div>
+        <div id="button-container">
+          <button id="play-btn">Play</button>
+          <button class="hidden" id="pause-btn">Pause</button>
+        </div>
       </div>
     </div>
   </div>
