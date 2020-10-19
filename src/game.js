@@ -23,15 +23,20 @@ export default class Tetris {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
     this.inputHandler();
-    this.startPlay();
+    this.handleButtons();
     this.requestId;
   }
 
-  startPlay() {
+  handleButtons() {
     let playBtn = document.getElementById("play-btn");
     playBtn.addEventListener("click", e => {
       e.preventDefault();
       this.play();
+    })
+    let pauseBtn = document.getElementById("pause-btn");
+    pauseBtn.addEventListener("click", e => {
+      e.preventDefault();
+      this.pause();
     })
   }
 
@@ -55,6 +60,15 @@ export default class Tetris {
     this.animate();
   }
 
+  pause() {
+    if (!this.requestId) {
+      this.animate();
+      return;
+    }
+
+    cancelAnimationFrame(this.requestId);
+    this.requestId = null;
+  }
 
   reset() {
     stats.score = 0;
