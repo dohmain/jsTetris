@@ -60,7 +60,7 @@ export default class Level {
       if (stats.levelProgress >= 10) {
         stats.level++;
         stats.levelProgress -= 10;
-        time.interval = SPEED[stats.level]; 
+        time.interval = stats.level >= 29 ? 17 : stats.level > 19 && stats.level < 29 ? SPEED[19] : SPEED[stats.level]; 
       }
       console.log(stats.levelProgress);
       console.log(stats.level)

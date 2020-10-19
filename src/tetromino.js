@@ -6,7 +6,7 @@ export default class Tetromino {
     this.tetrominoNumber = Math.floor(Math.random() * TETROMINOS.length)
     this.color = COLORS[1];
     this.shape = TETROMINOS[0];
-    this.x = 3;
+    this.x = 0;
     this.y = 0;
   }
 

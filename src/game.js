@@ -8,12 +8,12 @@ export let values = {
   levelProgress: 0,
 }
 
-export let stats = new Proxy(values, {
-  set: (target, key, value) => {
-    target[key] = value;
-    return true;
-  }
-});
+export let stats = {
+  score: 0,
+  level: 0,
+  lines: 0,
+  levelProgress: 0,
+}
 
 export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
 
@@ -62,7 +62,6 @@ export default class Tetris {
     stats.lines = 0;
     stats.levelProgress = 0;
     this.level.reset();
-    // this.time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
   }
 
   inputHandler() {
