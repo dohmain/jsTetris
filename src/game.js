@@ -1,22 +1,29 @@
 import Level from './level';
 import { SPEED } from './constant';
 
-export let values = {
+export let statValues = {
   score: 0,
   level: 0,
   lines: 0,
   levelProgress: 0,
 }
 
-export let stats = {
-  score: 0,
-  level: 0,
-  lines: 0,
-  levelProgress: 0,
+export let stats = new Proxy(statValues, {
+  set: (target, key, value) => {
+    target[key] = value;
+    updateStats(key, value);
+    return true;
+  }
+})
+
+function updateStats(key, value) {
+  let element = document.getElementById(key);
+  if (element) {
+    element.textContent = value;
+  }
 }
 
 export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
-
 
 export default class Tetris {
   constructor(canvas) {
@@ -105,7 +112,7 @@ export default class Tetris {
       }
       if (this.level.isValidMove(nextTetromino)) {
         this.level.tetromino.move(nextTetromino)
-        stats.score++
+        if (pressedKey === "k") stats.score++
       }
     }
   }
