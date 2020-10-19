@@ -1,10 +1,27 @@
 import Level from './level';
+import { SPEED } from './constant';
+
+export let values = {
+  score: 0,
+  level: 0,
+  lines: 0,
+  levelProgress: 0,
+}
+
+export let stats = new Proxy(values, {
+  set: (target, key, value) => {
+    target[key] = value;
+    return true;
+  }
+});
+
+export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
+
 
 export default class Tetris {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
-    this.time = {start: 0, elapsed: 0, interval: 100};
     this.inputHandler();
     this.startPlay();
     this.requestId;
@@ -19,9 +36,9 @@ export default class Tetris {
   }
 
   animate(now = 0) {
-    this.time.elapsed = now - this.time.start;
-    if (this.time.elapsed > this.time.interval) {
-      this.time.start = now;
+    time.elapsed = now - time.start;
+    if (time.elapsed > time.interval) {
+      time.start = now;
       if (!this.level.gravity()) {
         alert("game over")
         return cancelAnimationFrame(this.requestId);
@@ -33,9 +50,19 @@ export default class Tetris {
   }
 
   play() {
-    this.level.reset();
+    this.reset();
     if (this.requestId) cancelAnimationFrame(this.requestId);
     this.animate();
+  }
+
+
+  reset() {
+    stats.score = 0;
+    stats.level = 0;
+    stats.lines = 0;
+    stats.levelProgress = 0;
+    this.level.reset();
+    // this.time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
   }
 
   inputHandler() {
@@ -56,7 +83,6 @@ export default class Tetris {
     if (keyMap[pressedKey]) {
       e.preventDefault()
       let nextTetromino = keyMap[pressedKey](this.level.tetromino)
-      console.log(pressedKey)
       if (pressedKey === "i") {
         while (this.level.isValidMove(nextTetromino)) {
           this.level.tetromino.move(nextTetromino);
