@@ -65,7 +65,7 @@ export default class Level {
   }
   
   rotate(tetromino, direction) {
-    let newTetromino = tetromino;
+    let newTetromino = JSON.parse(JSON.stringify(tetromino));
     if (direction === "left") {
       newTetromino.shape.forEach(row => row.reverse());
       for (let y = 0; y < newTetromino.shape.length; ++y) {

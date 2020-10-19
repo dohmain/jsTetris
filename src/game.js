@@ -4,7 +4,7 @@ export default class Tetris {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.level = new Level(this.ctx);
-    this.time = {start: 0, elapsed: 0, interval: 200};
+    this.time = {start: 0, elapsed: 0, interval: 1200};
     this.inputHandler();
     this.startPlay();
   }
