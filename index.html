@@ -3,15 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./tetris.css">
   <title>jsTetris</title>
 </head>
 <body>
-  <canvas id="tetris"></canvas>
-  <button id="play-btn">Play</button>
-  <button id="pause-btn">Pause</button>
-  <span id="score">0</span>
-  <span id="level">0</span>
-  <span id="lines">0</span>
+  <div id="main-container">
+    <div id="left-col">
+      <canvas id="tetris"></canvas>
+    </div>
+    <div id="right-col">
+      <div class="stats-box" id="score-box">
+        Score:
+        <span id="score">0</span>
+      </div>
+      <div class="stats-box" id="level-box">
+        Level:
+        <span id="level">0</span>
+      </div>
+      <div class="stats-box" id="line-box">
+        Lines:
+        <span id="lines">0</span>
+      </div>
+      <div id="button-container">
+        <button id="play-btn">Play</button>
+        <button class="hidden" id="pause-btn">Pause</button>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="./dist/main.js"></script>
 </body>
 </html>

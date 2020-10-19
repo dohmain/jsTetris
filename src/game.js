@@ -36,15 +36,29 @@ export default class Tetris {
 
   handleButtons() {
     let playBtn = document.getElementById("play-btn");
+    let pauseBtn = document.getElementById("pause-btn");
     playBtn.addEventListener("click", e => {
       e.preventDefault();
+      playBtn.classList.add("hidden");
+      pauseBtn.classList.remove("hidden");
       this.play();
     })
-    let pauseBtn = document.getElementById("pause-btn");
     pauseBtn.addEventListener("click", e => {
       e.preventDefault();
+      if (pauseBtn.innerText === "Pause") {
+        pauseBtn.innerText = "Resume"
+      } else {
+        pauseBtn.innerText = "Pause"
+      }
       this.pause();
     })
+  }
+
+  showPlay() {
+    let playBtn = document.getElementById("play-btn");
+    let pauseBtn = document.getElementById("pause-btn");
+    playBtn.classList.remove("hidden");
+    pauseBtn.classList.add("hidden");
   }
 
   animate(now = 0) {
@@ -53,6 +67,7 @@ export default class Tetris {
       time.start = now;
       if (!this.level.gravity()) {
         alert("game over")
+        this.showPlay();
         return cancelAnimationFrame(this.requestId);
       }
     }
