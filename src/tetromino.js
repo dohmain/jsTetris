@@ -4,9 +4,9 @@ export default class Tetromino {
   constructor(ctx) {
     this.ctx = ctx;
     this.tetrominoNumber = Math.floor(Math.random() * TETROMINOS.length)
-    this.color = COLORS[1];
-    this.shape = TETROMINOS[0];
-    this.x = 0;
+    this.color = COLORS[this.tetrominoNumber + 1];
+    this.shape = TETROMINOS[this.tetrominoNumber];
+    this.x = 3;
     this.y = 0;
   }
 

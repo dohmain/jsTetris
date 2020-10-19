@@ -86,14 +86,12 @@ export default class Tetris {
         while (this.level.isValidMove(nextTetromino)) {
           this.level.tetromino.move(nextTetromino);
           stats.score += 2;
-          console.log(stats.score)
           nextTetromino = keyMap[pressedKey](this.level.tetromino)
         }
       }
       if (this.level.isValidMove(nextTetromino)) {
         this.level.tetromino.move(nextTetromino)
         stats.score++
-        console.log(stats.score)
       }
     }
   }
