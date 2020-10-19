@@ -55,6 +55,7 @@ export default class Level {
       }
     })
     if (lineCount > 0) {
+      stats.score += this.getLineClearScore(lineCount);
       stats.lines += lineCount;
       stats.levelProgress += lineCount;
       if (stats.levelProgress >= 10) {
@@ -65,6 +66,23 @@ export default class Level {
       console.log(stats.levelProgress);
       console.log(stats.level)
       console.log(time)
+      console.log(stats.score)
+    }
+  }
+
+  getLineClearScore(lines) {
+    debugger;
+    switch (lines) {
+      case 1:
+        return POINTS.SINGLE * (stats.level + 1)
+      case 2: 
+        return POINTS.DOUBLE * (stats.level + 1)
+      case 3: 
+        return POINTS.TRIPLE * (stats.level + 1)
+      case 4: 
+        return POINTS.TETRIS * (stats.level + 1)
+      default:
+        break;
     }
   }
 
