@@ -24,6 +24,8 @@ function updateStats(key, value) {
 }
 
 export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
+let playBtn = document.getElementById("play-btn");
+let pauseBtn = document.getElementById("pause-btn");
 
 export default class Tetris {
   constructor(canvas, canvasPreview) {
@@ -43,8 +45,6 @@ export default class Tetris {
   }
 
   handleButtons() {
-    let playBtn = document.getElementById("play-btn");
-    let pauseBtn = document.getElementById("pause-btn");
     playBtn.addEventListener("click", e => {
       e.preventDefault();
       playBtn.classList.add("hidden");
@@ -53,15 +53,11 @@ export default class Tetris {
     })
     pauseBtn.addEventListener("click", e => {
       e.preventDefault();
-      if (pauseBtn.innerText === "Pause") {
-        pauseBtn.innerText = "Resume"
-      } else {
-        pauseBtn.innerText = "Pause"
-      }
       this.pause();
     })
   }
 
+  
   showPlay() {
     let playBtn = document.getElementById("play-btn");
     let pauseBtn = document.getElementById("pause-btn");
@@ -93,11 +89,20 @@ export default class Tetris {
   pause() {
     if (!this.requestId) {
       this.animate();
+      this.toggleButtonText();
       return;
     }
-
+    this.toggleButtonText();
     cancelAnimationFrame(this.requestId);
     this.requestId = null;
+  }
+  
+  toggleButtonText() {
+    if (pauseBtn.innerText === "Pause") {
+      pauseBtn.innerText = "Resume"
+    } else {
+      pauseBtn.innerText = "Pause"
+    }
   }
 
   reset() {
@@ -122,7 +127,7 @@ export default class Tetris {
       ["o"]: tetromino => this.level.rotate(tetromino, "right"),
     }
     let pressedKey = e.key.toLowerCase();
-
+    if (pressedKey === "escape") this.pause();
     if (keyMap[pressedKey]) {
       e.preventDefault()
       let nextTetromino = keyMap[pressedKey](this.level.tetromino)
