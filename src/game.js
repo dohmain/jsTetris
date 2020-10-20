@@ -57,6 +57,7 @@ export default class Tetris {
       e.preventDefault();
       this.pause();
       this.showPause();
+      this.gameOver();
     })
     helpBtn.addEventListener("click", e => {
       e.preventDefault();
@@ -77,7 +78,7 @@ export default class Tetris {
     if (time.elapsed > time.interval) {
       time.start = now;
       if (!this.level.gravity()) {
-        alert("game over")
+        this.gameOver();
         this.showPlay();
         return cancelAnimationFrame(this.requestId);
       }
@@ -102,6 +103,14 @@ export default class Tetris {
     cancelAnimationFrame(this.requestId);
     this.toggleButtonText();
     this.requestId = null;
+  }
+
+  gameOver() {
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(.25, 3.5, 9.5, 2.2);
+    this.ctx.font = "1px 'Press Start 2P'";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText("GAME OVER", .6, 5.2)
   }
 
   showPause() {

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> -->
   <script src="https://kit.fontawesome.com/78d92bba28.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./tetris.css">
   <title>jsTetris</title>
@@ -11,7 +10,7 @@
 <body>
   <div id="main-container">
     <div id="header-container">
-      <span id="header-text">TETRIS</span>
+      <h1 class="embossed" id="header-text">TETRIS</h1>
     </div>
     <div id="col-containers">
       <div class="cols border" id="left-col">
@@ -20,29 +19,29 @@
       <div class="cols" id="right-col">
         <div id="top-right-col">
           <div class="stats-box" id="score-box">
-            <span class="stats-label">Score:</span>
+            <span class="embossed stats-label">Score:</span>
             <span class="stats-value border" id="score">0</span>
           </div>
           <div class="stats-box" id="level-box">
-            <span class="stats-label">Level:</span>
+            <span class="embossed stats-label">Level:</span>
             <span class="stats-value border" id="level">0</span>
           </div>
           <div class="stats-box" id="line-box">
-            <span class="stats-label">Lines:</span>
+            <span class="embossed stats-label">Lines:</span>
             <span class="stats-value border" id="lines">0</span>
           </div>
           <div id="preview-container">
-            <span class="stats-label" id="next">Next:</span>
+            <span class="embossed stats-label" id="next">Next:</span>
             <canvas class="stats-value border" id="preview"></canvas>
           </div>
           <div id="button-container">
-            <button id="play-btn">Play</button>
-            <button class="hidden" id="pause-btn">Pause</button>
-            <button id="help-btn">?</button>
+            <button class="embossed" id="play-btn">Play</button>
+            <button class="embossed hidden" id="pause-btn">Pause</button>
+            <button class="embossed" id="help-btn">?</button>
           </div>
         </div>
         <div class="border" id="bottom-right-col">
-          <div class="corner-box" id="contact-container">
+          <div class="corner-box embossed" id="contact-container">
             <span class="corner-heading" id="contact-heading">Created by:</span>
             <div class="corner-links" id="contact-links">
               <a class="contact-link" href="https://joedoh.dev" alt="Portfolio" target="_blank"><i class="fas fa-id-badge"></i></a>
@@ -51,7 +50,7 @@
               <a class="contact-link" href="mailto:contact@joedoh.dev" alt="Email" target="_blank"><i class="fas fa-envelope-square"></i></a>
             </div>
           </div>
-          <div class="corner-box" id="tech-corner">
+          <div class="corner-box embossed" id="tech-corner">
             <span class="corner-heading" id="tech-heading">with:</span>
             <div class="corner-links" id="tech-imgs">
               <img class="tech-img" src="./img/html5.png" alt="HTML5">
