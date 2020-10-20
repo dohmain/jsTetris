@@ -7,7 +7,7 @@ export default class Tetromino {
     this.color = COLORS[this.tetrominoNumber + 1];
     this.shape = TETROMINOS[this.tetrominoNumber];
     this.x = 0;
-    this.y = 0;
+    this.y = -1;
   }
 
   getStartPos() {

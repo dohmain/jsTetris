@@ -36,7 +36,7 @@ export default class Level {
     } else {
       this.freeze();
       this.lineClear();
-      if (this.tetromino.y === 1) {
+      if (this.tetromino.y === 0) {
         return false;
       }
       this.tetromino = this.nextTetromino;
