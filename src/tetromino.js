@@ -26,4 +26,31 @@ export default class Tetromino {
       })
     })
   }
+
+  drawNext() {
+    this.ctx.fillStyle = this.color;
+    let dx, dy;
+    switch (this.shape.length) {
+      case 4:
+        dx = 0;
+        dy = .5;
+        break;
+      case 3: 
+        dx = .5;
+        dy = .75;
+        break;
+      case 2:
+        dx = 1;
+        dy = 1;
+      default:
+        break;
+    }
+    this.shape.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if (value > 0) {
+          this.ctx.fillRect(dx + x, dy + y, 1, 1);
+        }
+      })
+    })
+  }
 }

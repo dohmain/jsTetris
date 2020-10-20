@@ -19,9 +19,8 @@ export default class Level {
 
   getNextTetromino() {
     this.nextTetromino = new Tetromino(this.ctxNext);
-    debugger;
     this.ctxNext.clearRect(0, 0, this.ctxNext.canvas.width, this.ctxNext.canvas.height);
-    this.nextTetromino.draw();
+    this.nextTetromino.drawNext();
   }
 
   getNewLevel() {
