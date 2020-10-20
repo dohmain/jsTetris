@@ -3,8 +3,9 @@ import Tetromino from './tetromino';
 import { stats, time } from './game';
 
 export default class Level {
-  constructor(ctx) {
+  constructor(ctx, ctxNext) {
     this.ctx = ctx;
+    this.ctxNext = ctxNext;
     this.ctx.canvas.width = TETRIS.TILE_SIZE * TETRIS.COLS;
     this.ctx.canvas.height = TETRIS.TILE_SIZE * TETRIS.ROWS;
     this.ctx.scale(TETRIS.TILE_SIZE, TETRIS.TILE_SIZE)
@@ -13,6 +14,14 @@ export default class Level {
   reset() {
     this.grid = this.getNewLevel();
     this.tetromino = new Tetromino(this.ctx);
+    this.getNextTetromino();
+  }
+
+  getNextTetromino() {
+    this.nextTetromino = new Tetromino(this.ctxNext);
+    debugger;
+    this.ctxNext.clearRect(0, 0, this.ctxNext.canvas.width, this.ctxNext.canvas.height);
+    this.nextTetromino.draw();
   }
 
   getNewLevel() {
@@ -20,17 +29,19 @@ export default class Level {
   }
 
   gravity() {
-    let nextTetromino = this.tetromino;
-    nextTetromino.y += 1;
-    if (this.isValidMove(nextTetromino)) {
-      this.tetromino.move(nextTetromino);
+    let moveTetromino = this.tetromino;
+    moveTetromino.y += 1;
+    if (this.isValidMove(moveTetromino)) {
+      this.tetromino.move(moveTetromino);
     } else {
       this.freeze();
       this.lineClear();
       if (this.tetromino.y === 1) {
         return false;
       }
-      this.tetromino = new Tetromino(this.ctx);
+      this.tetromino = this.nextTetromino;
+      this.tetromino.ctx = this.ctx;
+      this.getNextTetromino();
     }
     return true;
   }

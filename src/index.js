@@ -1,3 +1,4 @@
 import Tetris from './game';
 const canvas = document.getElementById("tetris");
-new Tetris(canvas);    
+const canvasPreview = document.getElementById("preview");
+new Tetris(canvas, canvasPreview);    

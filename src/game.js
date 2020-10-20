@@ -1,5 +1,5 @@
 import Level from './level';
-import { SPEED } from './constant';
+import { SPEED, TETRIS } from './constant';
 
 export let statValues = {
   score: 0,
@@ -26,12 +26,20 @@ function updateStats(key, value) {
 export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
 
 export default class Tetris {
-  constructor(canvas) {
+  constructor(canvas, canvasPreview) {
     this.ctx = canvas.getContext("2d");
-    this.level = new Level(this.ctx);
+    this.ctxNext = canvasPreview.getContext("2d");
+    this.level = new Level(this.ctx, this.ctxNext);
     this.inputHandler();
     this.handleButtons();
+    this.initPreview();
     this.requestId;
+  }
+
+  initPreview() {
+    this.ctxNext.canvas.width = 4 * TETRIS.TILE_SIZE;
+    this.ctxNext.canvas.height = 4 * TETRIS.TILE_SIZE;
+    this.ctxNext.scale(TETRIS.TILE_SIZE, TETRIS.TILE_SIZE);
   }
 
   handleButtons() {
