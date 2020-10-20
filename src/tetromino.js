@@ -10,6 +10,10 @@ export default class Tetromino {
     this.y = 0;
   }
 
+  getStartPos() {
+    this.x = this.tetrominoNumber === 3 ? 4 : 3;
+  }
+
   move(tetromino) {
     this.x = tetromino.x;
     this.y = tetromino.y;

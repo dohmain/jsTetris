@@ -14,6 +14,7 @@ export default class Level {
   reset() {
     this.grid = this.getNewLevel();
     this.tetromino = new Tetromino(this.ctx);
+    this.tetromino.getStartPos();
     this.getNextTetromino();
   }
 
@@ -40,6 +41,7 @@ export default class Level {
       }
       this.tetromino = this.nextTetromino;
       this.tetromino.ctx = this.ctx;
+      this.tetromino.getStartPos();
       this.getNextTetromino();
     }
     return true;
