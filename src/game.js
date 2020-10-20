@@ -56,13 +56,13 @@ export default class Tetris {
     pauseBtn.addEventListener("click", e => {
       e.preventDefault();
       this.pause();
+      // this.showHelp();
     })
     helpBtn.addEventListener("click", e => {
       e.preventDefault();
       this.pause();
     })
   }
-
   
   showPlay() {
     let playBtn = document.getElementById("play-btn");
@@ -101,6 +101,12 @@ export default class Tetris {
     this.toggleButtonText();
     cancelAnimationFrame(this.requestId);
     this.requestId = null;
+
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(1, 3.5, 8, 2.2);
+    this.ctx.font = "1px 'Press Start 2P'";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText("PAUSED", 2.1, 5.2)
   }
   
   toggleButtonText() {
