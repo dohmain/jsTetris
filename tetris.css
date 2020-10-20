@@ -71,7 +71,9 @@ body {
   display: flex; 
   flex-direction: column;
   margin: auto;
-  background: white;
+  background: darkgray;
+  border: 5px solid lightgray;
+  border-style: outset;
 }
 
 #header-container {
@@ -107,7 +109,7 @@ body {
 }
 
 .stats-label {
-  padding-bottom: .5em;
+  padding: .35em;
 }
 .stats-value {
   width: 120px;
@@ -129,14 +131,6 @@ body {
   /* padding-top: 1em; */
 }
 
-#contact-container{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 45px;
-  font-size: 1.5em;
-}
-
 a {
   color: black;
 }
@@ -153,11 +147,13 @@ a:hover {
 
 button {
   font-family: "Press Start 2P", sans-serif;
-  border: none;
   font-size: 1em;
   width: 130px;
   height: 45px;
   margin: .1em;
+  border: 5px solid lightgray;
+  border-style: outset;
+  background-color: darkgrey;
 }
 
 #help-btn {
@@ -166,7 +162,6 @@ button {
 
 button:hover {
   font-size: 1.05em;
-  border-style: outset;
   cursor: pointer;
 }
 
@@ -182,22 +177,23 @@ button:active {
   display: none;
 }
 
-#tech-corner {
+.corner-box {
   display: flex;
   flex-direction: column;
   padding-top: .5em;
 }
 
-#tech-heading {
+.corner-heading {
   font-size: .5em;
   text-align: center;
 }
-#tech-imgs {
+.corner-links {
   display: flex;
   justify-content: space-between;
 }
 
-.tech-img {
-  width: 1.5em;
+.tech-img, .contact-link {
+  width: 1em;
   padding: .25em;
+  font-size: 1.2em;
 }

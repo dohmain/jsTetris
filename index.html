@@ -36,21 +36,24 @@
             <canvas class="stats-value border" id="preview"></canvas>
           </div>
           <div id="button-container">
-            <button class="border" id="play-btn">Play</button>
-            <button class="border hidden" id="pause-btn">Pause</button>
-            <button class="border" id="help-btn">?</button>
+            <button id="play-btn">Play</button>
+            <button class="hidden" id="pause-btn">Pause</button>
+            <button id="help-btn">?</button>
           </div>
         </div>
-        <div id="bottom-right-col">
-          <div id="contact-container">
-            <a href="https://joedoh.dev" alt="Portfolio" target="_blank"><i class="fas fa-id-badge"></i></a>
-            <a href="https://github.com/dohmain" alt="Github" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/joedoh" alt="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:contact@joedoh.dev" alt="Email" target="_blank"><i class="fas fa-envelope-square"></i></a>
+        <div class="border" id="bottom-right-col">
+          <div class="corner-box" id="contact-container">
+            <span class="corner-heading" id="contact-heading">Created by:</span>
+            <div class="corner-links" id="contact-links">
+              <a class="contact-link" href="https://joedoh.dev" alt="Portfolio" target="_blank"><i class="fas fa-id-badge"></i></a>
+              <a class="contact-link" href="https://github.com/dohmain" alt="Github" target="_blank"><i class="fab fa-github"></i></a>
+              <a class="contact-link" href="https://linkedin.com/in/joedoh" alt="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a class="contact-link" href="mailto:contact@joedoh.dev" alt="Email" target="_blank"><i class="fas fa-envelope-square"></i></a>
+            </div>
           </div>
-          <div id="tech-corner">
-            <span id="tech-heading">Created with:</span>
-            <div id="tech-imgs">
+          <div class="corner-box" id="tech-corner">
+            <span class="corner-heading" id="tech-heading">with:</span>
+            <div class="corner-links" id="tech-imgs">
               <img class="tech-img" src="./img/html5.png" alt="HTML5">
               <img class="tech-img" src="./img/css3.png" alt="CSS5">
               <img class="tech-img" src="./img/javascript.png" alt="JavaScript">
