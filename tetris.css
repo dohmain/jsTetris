@@ -83,6 +83,11 @@ body {
   flex-direction: row;
 }
 
+.border {
+  border: 5px solid lightgray;
+  border-style: inset;
+}
+
 #right-col {
   display: flex;
   flex-direction: column;
@@ -97,8 +102,11 @@ body {
 }
 
 .stats-value {
-  padding: 1em;
-  padding-bottom: 0;
+  width: 120px;
+  padding: .5em 0;
+  text-align: center;
+  color: red;
+  background-color: rgb(0, 11, 56);
 }
 
 #preview-container {
@@ -134,7 +142,7 @@ button {
   font-family: "Press Start 2P", sans-serif;
   border: none;
   font-size: 1em;
-  width: 100%;
+  width: 130px;
   height: 45px;
   margin: .05em;
 }
@@ -145,14 +153,16 @@ button {
 
 button:hover {
   font-size: 1.05em;
+  border-style: outset;
+  cursor: pointer;
 }
 
 button:focus {
   outline: none;
 }
 
-button:hover {
-  cursor: pointer;
+button:active {
+  border-style: inset;
 }
 
 .hidden{ 

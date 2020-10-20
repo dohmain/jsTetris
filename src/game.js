@@ -56,7 +56,6 @@ export default class Tetris {
     pauseBtn.addEventListener("click", e => {
       e.preventDefault();
       this.pause();
-      this.toggleButtonText();
       this.showPause();
     })
     helpBtn.addEventListener("click", e => {
@@ -97,9 +96,11 @@ export default class Tetris {
   pause() {
     if (!this.requestId) {
       this.animate();
+      this.toggleButtonText();
       return;
     }
     cancelAnimationFrame(this.requestId);
+    this.toggleButtonText();
     this.requestId = null;
   }
 
