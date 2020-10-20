@@ -18,29 +18,43 @@
         <canvas id="tetris"></canvas>
       </div>
       <div id="right-col">
-        <div class="stats-box" id="score-box">
-          Score:
-          <span class="stats-value" id="score">0</span>
+        <div id="top-right-col">
+          <div class="stats-box" id="score-box">
+            Score:
+            <span class="stats-value" id="score">0</span>
+          </div>
+          <div class="stats-box" id="level-box">
+            Level:
+            <span class="stats-value" id="level">0</span>
+          </div>
+          <div class="stats-box" id="line-box">
+            Lines:
+            <span class="stats-value" id="lines">0</span>
+          </div>
+          <div id="preview-container">
+            <span id="next">Next</span>
+            <canvas id="preview"></canvas>
+          </div>
+          <div id="button-container">
+            <button id="play-btn">Play</button>
+            <button class="hidden" id="pause-btn">Pause</button>
+          </div>
         </div>
-        <div class="stats-box" id="level-box">
-          Level:
-          <span class="stats-value" id="level">0</span>
-        </div>
-        <div class="stats-box" id="line-box">
-          Lines:
-          <span class="stats-value" id="lines">0</span>
-        </div>
-        <div id="preview-container">
-          <canvas id="preview"></canvas>
-        </div>
-        <div id="button-container">
-          <button id="play-btn">Play</button>
-          <button class="hidden" id="pause-btn">Pause</button>
-        </div>
-        <div id="contact-container">
-          <a href="https://github.com/dohmain" alt="Github" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/joedoh" alt="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:contact@joedoh.dev" alt="Email" target="_blank"><i class="fas fa-envelope-square"></i></a>
+        <div id="bottom-right-col">
+          <div id="contact-container">
+            <a href="https://github.com/dohmain" alt="Github" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/joedoh" alt="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:contact@joedoh.dev" alt="Email" target="_blank"><i class="fas fa-envelope-square"></i></a>
+          </div>
+          <div id="tech-corner">
+            <span id="tech-heading">Created with:</span>
+            <div id="tech-imgs">
+              <img class="tech-img" src="./img/html5.png" alt="HTML5">
+              <img class="tech-img" src="./img/css3.png" alt="CSS5">
+              <img class="tech-img" src="./img/javascript.png" alt="JavaScript">
+              <img class="tech-img" src="./img/canvasjs.png" alt="Canvas.js">
+            </div>
+          </div>
         </div>
       </div>
     </div>
