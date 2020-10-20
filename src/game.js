@@ -56,11 +56,13 @@ export default class Tetris {
     pauseBtn.addEventListener("click", e => {
       e.preventDefault();
       this.pause();
-      // this.showHelp();
+      this.toggleButtonText();
+      this.showPause();
     })
     helpBtn.addEventListener("click", e => {
       e.preventDefault();
-      this.pause();
+      if (this.requestId) this.pause();
+      this.showHelp();
     })
   }
   
@@ -95,18 +97,34 @@ export default class Tetris {
   pause() {
     if (!this.requestId) {
       this.animate();
-      this.toggleButtonText();
       return;
     }
-    this.toggleButtonText();
     cancelAnimationFrame(this.requestId);
     this.requestId = null;
+  }
 
+  showPause() {
     this.ctx.fillStyle = "black";
     this.ctx.fillRect(1, 3.5, 8, 2.2);
     this.ctx.font = "1px 'Press Start 2P'";
     this.ctx.fillStyle = "red";
     this.ctx.fillText("PAUSED", 2.1, 5.2)
+  }
+
+  showHelp() {
+    let x = 1;
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(.6, 3.5, 8.8, 9);
+    this.ctx.font = ".8px 'Press Start 2P'";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText("Controls", x, 5.2);
+    this.ctx.font = ".5px 'Press Start 2P'";
+    this.ctx.fillText("I = Hard Drop", x, 6.2);
+    this.ctx.fillText("J = Left", x, 7.2);
+    this.ctx.fillText("K = Soft Drop", x, 8.2);
+    this.ctx.fillText("L = Left", x, 9.2);
+    this.ctx.fillText("U = Rotate Left", x, 10.2);
+    this.ctx.fillText("O = Rotate Right", x, 11.2);
   }
   
   toggleButtonText() {
