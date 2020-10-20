@@ -24,8 +24,10 @@ function updateStats(key, value) {
 }
 
 export let time = {start: 0, elapsed: 0, interval: SPEED[stats.level]};
+
 let playBtn = document.getElementById("play-btn");
 let pauseBtn = document.getElementById("pause-btn");
+let helpBtn = document.getElementById("help-btn");
 
 export default class Tetris {
   constructor(canvas, canvasPreview) {
@@ -52,6 +54,10 @@ export default class Tetris {
       this.play();
     })
     pauseBtn.addEventListener("click", e => {
+      e.preventDefault();
+      this.pause();
+    })
+    helpBtn.addEventListener("click", e => {
       e.preventDefault();
       this.pause();
     })

@@ -50,6 +50,7 @@ table {
 body {
   display: flex;
   font-family: "Press Start 2P", sans-serif;
+  margin-top: 75px;
 }
 
 #main-container {
@@ -115,12 +116,13 @@ a:hover {
 
 #button-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* div {
+div {
   border: 1px solid red;
-} */
+}
 
 button {
   font-family: "Press Start 2P", sans-serif;
@@ -128,10 +130,15 @@ button {
   font-size: 1em;
   width: 100%;
   height: 45px;
+  margin: .05em;
+}
+
+#help-btn {
+  width: 45px;
 }
 
 button:hover {
-  font-size: 1.1em;
+  font-size: 1.05em;
 }
 
 button:focus {
