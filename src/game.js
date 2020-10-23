@@ -78,6 +78,7 @@ export default class Tetris {
     if (time.elapsed > time.interval) {
       time.start = now;
       if (!this.level.gravity()) {
+        debugger;
         this.gameOver();
         this.showPlay();
         return cancelAnimationFrame(this.requestId);

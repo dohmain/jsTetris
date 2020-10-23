@@ -51,7 +51,8 @@ export default class Level {
     this.tetromino.shape.forEach((row, y) => {
       row.forEach((value, x) => {
         if (value > 0) {
-          this.grid[y + this.tetromino.y - 1][x + this.tetromino.x] = value;
+          debugger;
+          this.grid[y + this.tetromino.y][x + this.tetromino.x] = value;
         }
       });
     });
