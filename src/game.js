@@ -132,7 +132,7 @@ export default class Tetris {
     this.ctx.fillText("I = Hard Drop", x, 6.2);
     this.ctx.fillText("J = Left", x, 7.2);
     this.ctx.fillText("K = Soft Drop", x, 8.2);
-    this.ctx.fillText("L = Left", x, 9.2);
+    this.ctx.fillText("L = Right", x, 9.2);
     this.ctx.fillText("U = Rotate Left", x, 10.2);
     this.ctx.fillText("O = Rotate Right", x, 11.2);
   }
